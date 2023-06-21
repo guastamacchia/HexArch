@@ -1,4 +1,12 @@
-package blog.valerioemanuele.adapter.driven;
+package org.atsaug.ha.adapter.driven;
+
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import org.apache.commons.io.FileUtils;
+import org.atsaug.ha.hexagon.port.driven.UserData;
+import org.atsaug.ha.hexagon.port.driven.UserRepository;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,19 +17,16 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-import org.apache.commons.io.FileUtils;
-
-import blog.valerioemanuele.hexagon.drivenport.forpersistingdata.UserData;
-import blog.valerioemanuele.hexagon.drivenport.forpersistingdata.UserRepository;
-
-public class UserRepositoryFileAdapter implements UserRepository {
+@Component
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+class UserRepositoryFileAdapter implements UserRepository {
 
 	private static File usersFile;
-	static{
+	static {
 		try {
 			usersFile = Files.createTempFile("users", ".txt").toFile();
 			FileUtils.writeStringToFile(usersFile, 
-					"Gage,Dudley,vel.venenatis@milacinia.com,1967-10-27\nAbdul,Bowen,elementum@ullamcorpereueuismod.edu,1977-04-01", 
+					"Gage,Dudley,vel.venenatis@milacinia.com,1967-10-27\nAbdul,Bowen,elementum@ullamcorpereueuismod.edu,1977-04-01\nFrancesco,Guastamacchia,info@atsaug.com,1985-06-21",
 					"UTF-8");
 		} catch (IOException e) {
 			e.printStackTrace();

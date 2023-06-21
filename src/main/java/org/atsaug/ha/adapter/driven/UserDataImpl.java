@@ -1,13 +1,13 @@
-package blog.valerioemanuele.adapter.driven;
+package org.atsaug.ha.adapter.driven;
 
 import java.time.LocalDate;
 
-import blog.valerioemanuele.hexagon.drivenport.forpersistingdata.UserData;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
+import org.atsaug.ha.hexagon.port.driven.UserData;
 
-@Builder @Data
-public class UserDataImpl implements UserData {
+@Builder
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+class UserDataImpl implements UserData {
 
 	private String name;
 	private String surname;
@@ -33,5 +33,4 @@ public class UserDataImpl implements UserData {
 	public LocalDate birthDate() {
 		return this.birthDate;
 	}
-
 }
